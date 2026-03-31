@@ -35,6 +35,9 @@ export async function POST(request: Request) {
     if (isMac()) {
       gpu_ids = "mps";
     }
+    
+    // Use provided gpu_ids or default to '0' if not provided
+    const gpuIds = gpu_ids || '0';
 
     if (id) {
       // Update existing training
@@ -42,7 +45,7 @@ export async function POST(request: Request) {
         where: { id },
         data: {
           name,
-          gpu_ids,
+          gpu_ids: gpuIds,
           job_config: JSON.stringify(job_config),
         },
       });
@@ -60,7 +63,7 @@ export async function POST(request: Request) {
       const training = await prisma.job.create({
         data: {
           name,
-          gpu_ids,
+          gpu_ids: gpuIds,
           job_config: JSON.stringify(job_config),
           queue_position: newQueuePosition,
         },

@@ -52,6 +52,8 @@ export interface CpuInfo {
 export interface GPUApiResponse {
   hasNvidiaSmi: boolean;
   isMac: boolean;
+  hasAmdSmi?: boolean;
+  hasRocmSmi?: boolean;
   gpus: GpuInfo[];
   error?: string;
 }
