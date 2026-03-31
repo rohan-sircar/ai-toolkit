@@ -157,11 +157,11 @@ if command -v rocm-smi &> /dev/null; then
     
     # Install PyTorch with ROCm
     print_info "Installing PyTorch with ROCm support..."
-    if command -v uv &> /dev/null; then
-        uv pip install --upgrade --index-url "https://rocm.nightlies.amd.com/v2/${ROCM_ARCH}/" --pre torch torchaudio torchvision
-    else
-        pip install --upgrade --index-url "https://rocm.nightlies.amd.com/v2/${ROCM_ARCH}/" --pre torch torchaudio torchvision
-    fi
+    # if command -v uv &> /dev/null; then
+    #     uv pip install --upgrade --index-url "https://rocm.nightlies.amd.com/v2/${ROCM_ARCH}/" --pre torch torchaudio torchvision
+    # else
+    #     pip install --upgrade --index-url "https://rocm.nightlies.amd.com/v2/${ROCM_ARCH}/" --pre torch torchaudio torchvision
+    # fi
 else
     print_info "CUDA/NVIDIA detected or no GPU. Installing PyTorch with CUDA support..."
     if command -v uv &> /dev/null; then
